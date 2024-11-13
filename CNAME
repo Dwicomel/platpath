@@ -1,1 +1,38 @@
-platpath.com
+def cek_ganjil_genap(nomor_plat, tanggal):
+    # Mengecek apakah nomor plat dan tanggal ganjil atau genap
+    # Extract the last digit from the license plate, handling non-numeric cases
+    try:
+        plat_akhir = int(nomor_plat[-3])  # Attempt to convert the last character to an integer
+    except ValueError:
+        # If the last character is not a number, try the second to last character
+        try:
+            plat_akhir = int(nomor_plat[-4]) 
+        except ValueError:
+            # If neither is a number, return an error message
+            return "Nomor plat tidak valid. Pastikan nomor plat diakhiri dengan angka."
+
+    if plat_akhir % 2 == 0:
+        jenis_plat = "genap"
+    else:
+        jenis_plat = "ganjil"
+
+    if tanggal % 2 == 0:
+        jenis_tanggal = "genap"
+    else:
+        jenis_tanggal = "ganjil"
+
+    # Membandingkan aturan ganjil-genap
+    if jenis_plat == jenis_tanggal:
+        return f"Kendaraan dengan plat {nomor_plat} diizinkan melintas pada tanggal {tanggal}."
+    else:
+        return f"Kendaraan dengan plat {nomor_plat} TIDAK diizinkan melintas pada tanggal {tanggal}."
+
+# Input dari pengguna
+nomor_plat = input("Masukkan nomor plat kendaraan Anda (contoh: B1234ABC): ").strip()
+tanggal = int(input("Masukkan tanggal (contoh: 12): "))
+
+# Output hasil
+hasil = cek_ganjil_genap(nomor_plat, tanggal)
+print(hasil)
+
+Tambah index.html
